@@ -1,4 +1,4 @@
-package com.example.bes_proj;
+package com.bes_proj;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,5 +11,4 @@ public class TerrariumController {
         model.addAttribute("message", "Hello World");
         return "terrarium";
     }
-
 }
