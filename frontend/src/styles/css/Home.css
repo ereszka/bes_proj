@@ -1,0 +1,20 @@
+.main-title {
+    font-family: "Coustard", serif;
+    font-weight: 400;
+    font-size: 3em;
+    font-style: normal;
+    color: #FFFAE5;
+}
+
+.terra {
+    background-color: #37818A;
+}
+
+.light-div {
+    background-color: #FFFAE5;
+}
+
+.tile {
+    width: 15rem;
+    margin: 10px;
+}
