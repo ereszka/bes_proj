@@ -11,12 +11,13 @@ function Home() {
                 <div className="col">
                 <h1 className="main-title m-5">Terra Uno</h1>
                 </div>
-                <div className="col align-self-end offset-md-4">
-                <SwitchButton/>
-                </div>
             </div>
 
             <TileMenu/>
+
+            <div className="row row-cols-lg-5 switch">
+                <SwitchButton/>
+            </div>
 
         </div>
     )

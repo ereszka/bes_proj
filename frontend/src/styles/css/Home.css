@@ -16,5 +16,11 @@
 
 .tile {
     width: 15rem;
+    height: 15rem;
     margin: 10px;
+}
+
+.switch {
+    padding-bottom: 20px;
+    padding-top: 50px;
 }

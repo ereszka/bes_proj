@@ -1,43 +1,76 @@
 import React from "react";
 import temp_img from '../assets/temperature.png';
 import light_img from '../assets/lightbulb.png';
+import hum_img from '../assets/humidity.png';
+import winter_img from '../assets/wintermode.png';
 import "../styles/css/Home.css";
 import Tile from "./Tile";
 
 function TileMenu() {
 
-    const t_sensors = ["tempA", "tempB"];
-    const h_sensors = ["humA", "humB"];
-    const lamps= ["lampA", "lampB", "lampUVB"];
+    // mockup data
+
+    const devices = [
+        {
+            name : "Temperature A",
+            data : "50",
+            isSensor: 1,
+            imgType : temp_img
+        },
+        {
+            name : "Temperature B",
+            data : "20",
+            isSensor : 1,
+            imgType : temp_img
+        },
+        {
+            name : "Humidity A",
+            data : "80",
+            isSensor : 1,
+            imgType: hum_img
+        },
+        {
+            name : "Humidity B",
+            data : "20",
+            isSensor: 1,
+            imgType: hum_img
+        },
+        {
+            name : "Lamp A",
+            data: "On",
+            isSensor: 0,
+            imgType: light_img
+        },
+        {
+            name : "Lamp B",
+            data : "Off",
+            isSensor: 0,
+            imgType: light_img
+        }
+    ]
 
     return (
         <div className="container">
-            <div className="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-                {t_sensors.map((sensor) => (
+            <div className="row row-cols-lg-4 g-1 g-lg-3">
+                {devices.map((device) => (
                     <Tile
-                        name={sensor}
-                        data={10}
-                        isSensor={1}/>
+                        device={device}/>
                 ))}
-                {h_sensors.map((sensor) => (
-                    <Tile
-                        name={sensor}
-                        data={50}
-                        isSensor={1}
-                    />
-                ))}
+
+                <Tile
+                    device = {{
+                    name : "Winter mode",
+                    data : "On",
+                    isSensor : 0,
+                    imgType : winter_img
+                    }}
+                />
+
             </div>
 
-        <div className="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-            {lamps.map((lamp) => (
-                <Tile
-                    name={lamp}
-                    data={"On"}
-                    isSensor={0}/>
-            ))}
-        </div>
         </div>
     )
 }
 
 export default TileMenu;
+

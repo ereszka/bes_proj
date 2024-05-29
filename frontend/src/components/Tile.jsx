@@ -1,21 +1,19 @@
 import React from 'react';
-import temp_img from '../assets/temperature.png';
-import light_img from '../assets/lightbulb.png';
 import LampButton from "./LampButton";
 
-function Tile({name, data, isSensor}) {
+function tile({device}) {
     return(
         <div className="col-3">
             <div className="card border-0 tile">
-                <img src={temp_img} className="card-img-top" alt="..."/>
+                <img src={device.imgType} className="card-img-top" alt="..."/>
                 <div className="card-body light-div">
-                    <h5 className="card-title">Output: {data}</h5>
-                    <p className="card-text">Device: {name}</p>
-                    {isSensor ? "" : <LampButton/>}
+                    <h5 className="card-title">{device.isSensor ? "Output" : "State"} : {device.data}</h5>
+                    <p className="card-text">{device.name}</p>
+                    {device.isSensor ? "" : <LampButton isOn={device.data}/>}
                 </div>
             </div>
         </div>
     )
 }
 
-export default Tile;
+export default tile;
