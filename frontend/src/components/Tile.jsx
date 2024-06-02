@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import LampButton from "./LampButton";
-import {List} from "antd";
 
 function tile({device}) {
 

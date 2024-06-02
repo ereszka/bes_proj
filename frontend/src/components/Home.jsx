@@ -1,7 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import TileMenu from "./TileMenu";
+import React from 'react';
 import '../styles/css/Home.css';
-import SwitchButton from "./SwitchButton";
 import HookMqtt from "./mqtt";
 
 function Home() {
