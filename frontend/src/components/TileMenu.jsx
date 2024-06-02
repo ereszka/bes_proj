@@ -1,38 +1,51 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import temp_img from '../assets/temperature.png';
 import light_img from '../assets/lightbulb.png';
 import hum_img from '../assets/humidity.png';
 import winter_img from '../assets/wintermode.png';
 import "../styles/css/Home.css";
 import Tile from "./Tile";
+import SwitchButton from "./SwitchButton";
+import {List} from "antd";
 
-function TileMenu() {
+function TileMenu({payload}) {
+
+    const [messages, setMessages] = useState([])
+
+    useEffect(() => {
+        if (payload.topic) {
+            setMessages(messages => [...messages, payload])
+        }
+    }, [payload])
+
+    const renderListItem = (item) => (
+        <List.Item>
+            <List.Item.Meta
+                title={item.topic}
+                description={item.message}
+            />
+        </List.Item>
+    )
 
     // mockup data
 
     const devices = [
         {
-            name : "Temperature A",
-            data : "50",
+            name : "Temperature",
+            data : renderListItem,
             isSensor: 1,
             imgType : temp_img
         },
+        // {
+        //     name : "Temperature B",
+        //     data : "20",
+        //     isSensor : 1,
+        //     imgType : temp_img
+        // },
         {
-            name : "Temperature B",
-            data : "20",
+            name : "Humidity",
+            data : renderListItem,
             isSensor : 1,
-            imgType : temp_img
-        },
-        {
-            name : "Humidity A",
-            data : "80",
-            isSensor : 1,
-            imgType: hum_img
-        },
-        {
-            name : "Humidity B",
-            data : "20",
-            isSensor: 1,
             imgType: hum_img
         },
         {
@@ -43,6 +56,12 @@ function TileMenu() {
         },
         {
             name : "Lamp B",
+            data : "Off",
+            isSensor: 0,
+            imgType: light_img
+        },
+        {
+            name : "Lamp UVB",
             data : "Off",
             isSensor: 0,
             imgType: light_img
@@ -66,6 +85,10 @@ function TileMenu() {
                     }}
                 />
 
+            </div>
+
+            <div className="row row-cols-lg-5 switch">
+                <SwitchButton/>
             </div>
 
         </div>

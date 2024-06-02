@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import TileMenu from "./TileMenu";
 import '../styles/css/Home.css';
 import SwitchButton from "./SwitchButton";
+import HookMqtt from "./mqtt";
 
 function Home() {
+
     return (
         <div className="container terra">
 
@@ -13,11 +15,7 @@ function Home() {
                 </div>
             </div>
 
-            <TileMenu/>
-
-            <div className="row row-cols-lg-5 switch">
-                <SwitchButton/>
-            </div>
+            <HookMqtt/>
 
         </div>
     )

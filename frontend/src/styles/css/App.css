@@ -1,4 +1,18 @@
 .App {
     background-color: #37818A;
-    height: 1000px;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.App .ant-card {
+    width: 100%;
+    max-width: 850px;
+    margin-bottom: 20px;
+}
+
+.ant-form-inline .ant-form-item {
+    margin-bottom: 20px;
 }
