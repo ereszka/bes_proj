@@ -13,7 +13,7 @@ const HookMqtt = () => {
         httpConnect();
         const intervalId = setInterval(() => {
             httpConnect();
-        }, 300000) // 5 min refresh
+        }, 180000) // 5 min refresh
     }, [])
 
     return (

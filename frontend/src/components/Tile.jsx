@@ -1,5 +1,5 @@
 import React from 'react';
-import LampButton from "./LampButton";
+import TileButton from "./TileButton";
 
 function tile({device}) {
 
@@ -13,7 +13,7 @@ function tile({device}) {
                     <h5 className="card-title">Output : {device.data}</h5> :
                     <h5 className="card-title">State : {device.data ? "On" : "Off"}</h5>
                     }
-                    {device.isSensor ? "" : <LampButton isOn={device.data}/>}
+                    {device.isSensor ? "" : <TileButton isOn={device.data} id={device.id}/>}
                 </div>
             </div>
         </div>

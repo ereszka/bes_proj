@@ -1,10 +1,23 @@
 import React from 'react'
+import {Button} from 'antd'
 
 function SwitchButton({auto}) {
+
+    function handleClick() {
+        fetch('http://localhost:5284/Arduino/SetAuto/' + !auto, {method: "POST"}).then()
+    }
     return (
     <div className='d-flex justify-content-evenly' style={{width: '22%'}}>
-        <button href="#" className="btn btn-warning" style={{width: '48%'}} disabled={!auto} >Manual</button>
-        <button href="#" className="btn btn-warning" style={{width: '48%'}} disabled={auto}>Auto</button>
+        <Button
+            onClick={handleClick}
+            disabled={!auto}>
+            Manual
+        </Button>
+        <Button
+            onClick={handleClick}
+            disabled={auto}>
+            Auto
+        </Button>
     </div> )
 }
 
