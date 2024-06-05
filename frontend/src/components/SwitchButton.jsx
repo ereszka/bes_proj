@@ -4,7 +4,11 @@ import {Button} from 'antd'
 function SwitchButton({auto}) {
 
     function handleClick() {
-        fetch('http://localhost:5284/Arduino/SetAuto/' + !auto, {method: "POST"}).then()
+        let param = "0";
+        if(!auto){
+            param = "1";
+        }
+        fetch('http://localhost:5284/Arduino/SetAuto/' + param, {method: "POST"}).then()
     }
     return (
     <div className='d-flex justify-content-evenly' style={{width: '22%'}}>
