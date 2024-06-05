@@ -11,7 +11,7 @@ function SwitchButton({auto}) {
         fetch('http://localhost:5284/Arduino/SetAuto/' + param, {method: "POST"}).then()
     }
     return (
-    <div className='d-flex justify-content-evenly' style={{width: '22%'}}>
+    <div className='d-flex justify-content-evenly'>
         <Button
             onClick={handleClick}
             disabled={!auto}>

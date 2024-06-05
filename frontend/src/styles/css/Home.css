@@ -8,6 +8,7 @@
 
 .terra {
     background-color: #37818A;
+    width: 80%;
 }
 
 .light-div {
@@ -21,7 +22,7 @@
 
 .switch {
     padding-bottom: 20px;
-    padding-top: 50px;
+    padding-top: 20px;
 }
 
 .sensor-data{

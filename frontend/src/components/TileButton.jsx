@@ -1,8 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Button} from 'antd'
 
-function TileButton({isOn, id}) {
-
+function TileButton({isOn, id, auto}) {
     function handleClick() {
         let param = "0";
         if(!isOn){
@@ -24,7 +23,8 @@ function TileButton({isOn, id}) {
 
     return(
         <Button
-            onClick={handleClick}>
+            onClick={handleClick}
+            disabled={id === "winter" ? 0 : auto}>
             {isOn ? "Switch off" : "Switch on"}
         </Button>
     )

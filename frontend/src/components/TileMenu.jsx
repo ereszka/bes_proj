@@ -9,7 +9,7 @@ import SwitchButton from "./SwitchButton";
 
 function TileMenu({payload}) {
 
-    const devices = [
+    let devices = [
         {
             name : "Temperature (Hot Area)",
             data : payload.Temp_HOT + " °C",
@@ -70,10 +70,11 @@ function TileMenu({payload}) {
 
     return (
         <div className="container">
-            <div className="row row-cols-lg-4 g-1 g-lg-3">
+            <div className="row row-cols-lg-4 g-3 g-lg-3">
                 {devices.map((device) => (
                     <Tile
-                        device={device}/>
+                        device={device}
+                        auto={payload.Mode_AUTO}/>
                 ))}
 
             </div>
