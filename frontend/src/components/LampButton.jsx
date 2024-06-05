@@ -1,10 +1,17 @@
 import React from 'react'
+import {Button} from 'antd'
 
 function LampButton({isOn}) {
+
+    const onClick = () => {
+        console.log("Publisher TODO") // TODO
+    }
+
     return(
-            <a href="#" className="btn btn-outline-dark">
+        <Button
+            onClick={onClick}>
             {isOn ? "Switch off" : "Switch on"}
-            </a>      
+        </Button>
     )
 }
 

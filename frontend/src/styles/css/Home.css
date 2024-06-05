@@ -16,11 +16,15 @@
 
 .tile {
     width: 15rem;
-    height: 18rem;
     margin: 10px;
 }
 
 .switch {
     padding-bottom: 20px;
     padding-top: 50px;
+}
+
+.sensor-data{
+    color: darkolivegreen;
+    padding-top: 10px;
 }

@@ -6,28 +6,8 @@ import winter_img from '../assets/wintermode.png';
 import "../styles/css/Home.css";
 import Tile from "./Tile";
 import SwitchButton from "./SwitchButton";
-import {List} from "antd";
 
 function TileMenu({payload}) {
-
-    const [messages, setMessages] = useState([])
-
-    useEffect(() => {
-        if (payload.topic) {
-            setMessages(messages => [...messages, payload])
-        }
-    }, [payload])
-
-    const renderListItem = (item) => (
-        <List.Item>
-            <List.Item.Meta
-                title={item.topic}
-                description={item.message}
-            />
-        </List.Item>
-    )
-
-    // mockup data
 
     const devices = [
         {
@@ -71,6 +51,12 @@ function TileMenu({payload}) {
             data : payload.Lamp_UVB,
             isSensor: 0,
             imgType: light_img
+        },
+        {
+            name : "Winter mode",
+            data : payload.Mode_WINTER,
+            isSensor : 0,
+            imgType : winter_img
         }
     ]
 
@@ -81,15 +67,6 @@ function TileMenu({payload}) {
                     <Tile
                         device={device}/>
                 ))}
-
-                <Tile
-                    device = {{
-                    name : "Winter Mode",
-                    data : payload.Mode_WINTER,
-                    isSensor : 0,
-                    imgType : winter_img
-                    }}
-                />
 
             </div>
 
