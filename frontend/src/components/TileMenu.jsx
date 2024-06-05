@@ -31,38 +31,44 @@ function TileMenu({payload}) {
 
     const devices = [
         {
-            name : "Temperature",
-            data : renderListItem,
+            name : "Temperature (Hot Area)",
+            data : payload.Temp_HOT + " °C",
             isSensor: 1,
             imgType : temp_img
         },
-        // {
-        //     name : "Temperature B",
-        //     data : "20",
-        //     isSensor : 1,
-        //     imgType : temp_img
-        // },
         {
-            name : "Humidity",
-            data : renderListItem,
+            name : "Temperature (Cold Area)",
+            data : payload.Temp_COLD + " °C",
+            isSensor : 1,
+            imgType : temp_img
+        },
+        {
+            name : "Humidity (Hot Area)",
+            data : payload.Hum_HOT + " %",
             isSensor : 1,
             imgType: hum_img
         },
         {
-            name : "Lamp A",
-            data: "On",
+            name : "Humidity (Cold Area)",
+            data : payload.Hum_HOT + " %",
+            isSensor : 1,
+            imgType: hum_img
+        },
+        {
+            name : "Lamp (Hot Area)",
+            data: payload.Lamp_HOT ,
             isSensor: 0,
             imgType: light_img
         },
         {
-            name : "Lamp B",
-            data : "Off",
+            name: "Lamp (Cold Area)",
+            data: payload.Lamp_COLD,
             isSensor: 0,
             imgType: light_img
         },
         {
             name : "Lamp UVB",
-            data : "Off",
+            data : payload.Lamp_UVB,
             isSensor: 0,
             imgType: light_img
         }
@@ -78,8 +84,8 @@ function TileMenu({payload}) {
 
                 <Tile
                     device = {{
-                    name : "Winter mode",
-                    data : "On",
+                    name : "Winter Mode",
+                    data : payload.Mode_WINTER,
                     isSensor : 0,
                     imgType : winter_img
                     }}
@@ -88,7 +94,7 @@ function TileMenu({payload}) {
             </div>
 
             <div className="row row-cols-lg-5 switch">
-                <SwitchButton/>
+                <SwitchButton auto={payload.Mode_AUTO}/>
             </div>
 
         </div>

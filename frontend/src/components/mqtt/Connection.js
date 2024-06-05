@@ -22,7 +22,7 @@ const Connection = ({ connect, disconnect, connectBtn }) => {
 
     const onFinish = (values) => {
         const { protocol, host, clientId, port, username, password } = values
-        const url = `${protocol}://${host}:${port}/mqtt`
+        const url = `${protocol}://${host}:${port}/mqtt`        
         const options = {
             clientId,
             username,

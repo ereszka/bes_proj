@@ -9,7 +9,10 @@ function tile({device}) {
                 <img src={device.imgType} className="card-img-top" alt="..."/>
                 <div className="card-body light-div">
                     <p className="card-text">{device.name}</p>
-                    <h5 className="card-title">{device.isSensor ? "Output" : "State"} : {device.data}</h5>
+                    {device.isSensor ? 
+                    <h5 className="card-title">Output : {device.data}</h5> :
+                    <h5 className="card-title">State : {device.data ? "On" : "Off"}</h5>
+                    }
                     {device.isSensor ? "" : <LampButton isOn={device.data}/>}
                 </div>
             </div>

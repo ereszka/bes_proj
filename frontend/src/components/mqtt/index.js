@@ -29,38 +29,47 @@ const HookMqtt = () => {
     const [payload, setPayload] = useState({})
     const [connectStatus, setConnectStatus] = useState('Connect')
 
-    const mqttConnect = (host, mqttOption) => {
-        setConnectStatus('Connecting')
-        setClient(mqtt.connect(host, mqttOption))
+    const httpConnect = () => {
+        fetch('http://localhost:5284/Arduino/GetInfo', {method: "GET"})
+            .then((response) => response.json()).then((json) => { setPayload(json.uplink_message.decoded_payload)})
     }
 
+
     useEffect(() => {
-        if (client) {
-            // https://github.com/mqttjs/MQTT.js#event-connect
-            client.on('connect', () => {
-                setConnectStatus('Connected')
-                console.log('connection successful')
-            })
+        httpConnect();
+        const intervalId = setInterval(() => {
+            httpConnect();
+        }, 300000) // 5 min refresh
+    }, [])
 
-            // https://github.com/mqttjs/MQTT.js#event-error
-            client.on('error', (err) => {
-                console.error('Connection error: ', err)
-                client.end()
-            })
 
-            // https://github.com/mqttjs/MQTT.js#event-reconnect
-            client.on('reconnect', () => {
-                setConnectStatus('Reconnecting')
-            })
+    // useEffect(() => {
+    //     if (client) {
+    //         // https://github.com/mqttjs/MQTT.js#event-connect
+    //         client.on('connect', () => {
+    //             setConnectStatus('Connected')
+    //             console.log('connection successful')
+    //         })
 
-            // https://github.com/mqttjs/MQTT.js#event-message
-            client.on('message', (topic, message) => {
-                const payload = { topic, message: message.toString() }
-                setPayload(payload)
-                console.log(`received message: ${message} from topic: ${topic}`)
-            })
-        }
-    }, [client])
+    //         // https://github.com/mqttjs/MQTT.js#event-error
+    //         client.on('error', (err) => {
+    //             console.error('Connection error: ', err)
+    //             client.end()
+    //         })
+
+    //         // https://github.com/mqttjs/MQTT.js#event-reconnect
+    //         client.on('reconnect', () => {
+    //             setConnectStatus('Reconnecting')
+    //         })
+
+    //         // https://github.com/mqttjs/MQTT.js#event-message
+    //         client.on('message', (topic, message) => {
+    //             const payload = { topic, message: message.toString() }
+    //             setPayload(payload)
+    //             console.log(`received message: ${message} from topic: ${topic}`)
+    //         })
+    //     }
+    // }, [client])
 
     // disconnect
     // https://github.com/mqttjs/MQTT.js#mqttclientendforce-options-callback
@@ -127,7 +136,7 @@ const HookMqtt = () => {
     return (
         <>
             <TileMenu payload={payload}/>
-            <Connection
+            {/* <Connection
                 connect={mqttConnect}
                 disconnect={mqttDisconnect}
                 connectBtn={connectStatus}
@@ -136,7 +145,7 @@ const HookMqtt = () => {
                 <Subscriber sub={mqttSub} unSub={mqttUnSub} showUnsub={isSubed} />
                 <Publisher publish={mqttPublish} />
             </QosOption.Provider>
-            <Receiver payload={payload} />
+            <Receiver payload={payload} /> */}
         </>
     )
 }
