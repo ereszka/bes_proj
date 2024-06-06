@@ -7,7 +7,7 @@ import "../styles/css/Home.css";
 import Tile from "./Tile";
 import SwitchButton from "./SwitchButton";
 
-function TileMenu({payload}) {
+function TileMenu({payload, queue, changeState}) {
 
     let devices = [
         {
@@ -74,13 +74,15 @@ function TileMenu({payload}) {
                 {devices.map((device) => (
                     <Tile
                         device={device}
-                        auto={payload.Mode_AUTO}/>
+                        auto={payload.Mode_AUTO}
+                        changeState={changeState}/>
                 ))}
 
             </div>
 
             <div className="row row-cols-lg-5 switch">
-                <SwitchButton auto={payload.Mode_AUTO}/>
+                <SwitchButton auto={payload.Mode_AUTO} changeState={changeState}/>
+                <div style={{background: '#ffffff', borderRadius: '6px', fontSize: '14px', height: '32px', padding: '4px 15px', width: '150px', textAlign: 'center', lineHeight: '1.5714285714285714'}}><span>In queue: {queue}</span></div>
             </div>
 
         </div>

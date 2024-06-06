@@ -1,7 +1,7 @@
 import React from 'react';
 import TileButton from "./TileButton";
 
-function tile({device, auto}) {
+function tile({device, auto, changeState}) {
 
     return(
         <div className="col-3">
@@ -13,7 +13,7 @@ function tile({device, auto}) {
                     <h5 className="card-title">Output : {device.data}</h5> :
                     <h5 className="card-title">State : {device.data ? "On" : "Off"}</h5>
                     }
-                    {device.isSensor ? "" : <TileButton isOn={device.data} id={device.id} auto={auto}/>}
+                    {device.isSensor ? "" : <TileButton isOn={device.data} id={device.id} auto={auto} changeState={changeState}/>}
                 </div>
             </div>
         </div>
